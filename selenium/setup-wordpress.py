@@ -1,3 +1,4 @@
+#python setup-wordpress.py http://192.168.1.13:49158
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -6,7 +7,8 @@ import sys
 
 browser = webdriver.Firefox()
 
-browser.get('http://192.168.1.13:49158/wp-admin/install.php')
+browser.get(sys.argv[1] + '/wp-admin/install.php')
+#browser.get('http://192.168.1.13:49158/wp-admin/install.php')
 
 elem = browser.find_element_by_id('weblog_title')
 elem.send_keys('Website Title')

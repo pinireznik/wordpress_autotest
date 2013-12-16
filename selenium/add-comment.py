@@ -1,3 +1,5 @@
+#python add-comment.py http://192.168.1.13:49158 sgdsfsdfasd asgfd
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import sys
@@ -5,15 +7,17 @@ import sys
 
 browser = webdriver.Firefox()
 
-browser.get('http://192.168.1.13:49154')
-assert 'My Title' in browser.title
+browser.get(sys.argv[1])
+#browser.get('http://192.168.1.13:49154')
+assert 'Website Title' in browser.title
 
 
 
 elem = browser.find_element_by_class_name('entry-title')  
 assert 'HELLO WORLD!' in elem.text
 
-browser.get('http://192.168.1.13:49154/?page_id=2')
+browser.get(sys.argv[1] + '/?page_id=2')
+#browser.get('http://192.168.1.13:49154/?page_id=2')
 elem = browser.find_element_by_class_name('entry-content') 
 assert 'The XYZ Doohickey' in elem.text
 
@@ -23,7 +27,7 @@ elem.send_keys('Pini Reznik')
 elem = browser.find_element_by_id('email') 
 elem.send_keys('p.reznik@uglyduckling.nl')
 elem = browser.find_element_by_id('comment') 
-elem.send_keys(sys.argv[1:] )
+elem.send_keys(sys.argv[2:] )
 elem = browser.find_element_by_id('url')   
 elem.send_keys('continuousdelivery.uglyduckling.nl' + Keys.RETURN)
 
