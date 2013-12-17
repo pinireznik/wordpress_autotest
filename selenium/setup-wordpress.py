@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import sys
 
+print sys.argv[1]
 
 browser = webdriver.Firefox()
 

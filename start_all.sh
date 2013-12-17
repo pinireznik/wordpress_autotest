@@ -1,10 +1,14 @@
 #!/bin/bash
 
-docker run -d -p 80 -p 22 preznik/wordpress
+docker run -name wp -d -p 49100:80 -p 22 preznik/wordpress
 
-docker run -v `pwd`/selenium/:/tmp/src/ preznik/selenium-python xvfb-run python /tmp/src/setup-wordpress.py http://192.168.1.13:49158
+sleep 20
 
+docker run -v `pwd`/selenium/:/tmp/src/ preznik/selenium-python xvfb-run python /tmp/src/setup-wordpress.py http://172.20.10.9:49100
 
-docker run -v `pwd`/selenium/:/tmp/src/ preznik/selenium-python xvfb-run python /tmp/src/add-comment.py http://192.168.1.13:49158 sgdsfsdfsdfsdfgds
+sleep 10
 
+docker run -v `pwd`/selenium/:/tmp/src/ preznik/selenium-python xvfb-run python /tmp/src/add-comment.py http://172.20.10.9:49100 sgdsfsdfsdfsdfgds
+
+#docker kill wp ; docker rm wp
 
