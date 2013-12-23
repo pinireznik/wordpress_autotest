@@ -31,7 +31,7 @@ elem = browser.find_element_by_id('comment')
 elem.send_keys(sys.argv[2:] )
 elem = browser.find_element_by_id('url')   
 elem.send_keys('continuousdelivery.uglyduckling.nl' + Keys.RETURN)
-time.sleep (5)
+time.sleep (3)
 elem = browser.find_element_by_class_name('comment-awaiting-moderation') 
 print elem.text
 assert 'Your comment is awaiting moderation' in elem.text

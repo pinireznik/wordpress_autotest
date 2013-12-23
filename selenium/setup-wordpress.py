@@ -3,6 +3,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import sys
+import time
 
 print sys.argv[1]
 
@@ -21,7 +22,7 @@ elem = browser.find_element_by_id('pass2')
 elem.send_keys('password')
 elem = browser.find_element_by_id('admin_email')
 elem.send_keys('some_email@mymail.com' + Keys.RETURN)
-
+time.sleep (3)
 elem = browser.find_element_by_class_name('wp-core-ui') 
 assert 'Success!' in elem.text
 
